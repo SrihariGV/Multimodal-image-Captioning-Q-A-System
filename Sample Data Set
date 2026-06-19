@@ -1,18 +1,26 @@
-## Sample Dataset
+## Dataset
 
-| Image ID | Class Label |
-| -------- | ----------- |
-| IMG_001  | Dog         |
-| IMG_002  | Cat         |
-| IMG_003  | Airplane    |
-| IMG_004  | Horse       |
-| IMG_005  | Ship        |
+**Dataset Name:** CIFAR-10
 
-### Sample Data
+**Description:**
+The CIFAR-10 dataset is a popular image classification dataset containing 60,000 color images of size 32×32 pixels. The images are grouped into 10 different classes and are commonly used for training and evaluating deep learning models.
 
-* Image: Dog.jpg → Label: Dog
-* Image: Cat.jpg → Label: Cat
-* Image: Airplane.jpg → Label: Airplane
-* Image: Horse.jpg → Label: Horse
-* Image: Ship.jpg → Label: Ship
+**Classes:**
+
+* Airplane
+* Automobile
+* Bird
+* Cat
+* Deer
+* Dog
+* Frog
+* Horse
+* Ship
+* Truck
+
+**Dataset Size:**
+
+* Total Images: 60,000
+* Training Images: 50,000
+* Testing Images: 10,000
 
