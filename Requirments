@@ -1,0 +1,23 @@
+## Requirements
+
+### Hardware Requirements
+
+* Computer/Laptop
+* Minimum 4 GB RAM
+* Intel i3 Processor or above
+* 500 MB Free Storage
+
+### Software Requirements
+
+* Python 3.x
+* TensorFlow
+* Keras
+* NumPy
+* Matplotlib
+* Jupyter Notebook / VS Code
+
+### Python Libraries
+
+```bash
+pip install tensorflow numpy matplotlib
+```
