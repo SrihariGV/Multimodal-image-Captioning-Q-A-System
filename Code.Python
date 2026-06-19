@@ -1,0 +1,74 @@
+import streamlit as st
+from PIL import Image
+from transformers import BlipProcessor, BlipForConditionalGeneration, BlipForQuestionAnswering
+
+# Caption Model
+caption_processor = BlipProcessor.from_pretrained(
+    "Salesforce/blip-image-captioning-base"
+)
+caption_model = BlipForConditionalGeneration.from_pretrained(
+    "Salesforce/blip-image-captioning-base"
+)
+
+# VQA Model
+vqa_processor = BlipProcessor.from_pretrained(
+    "Salesforce/blip-vqa-base"
+)
+vqa_model = BlipForQuestionAnswering.from_pretrained(
+    "Salesforce/blip-vqa-base"
+)
+
+st.title("Multimodal Image Captioning + Q&A System")
+
+uploaded_file = st.file_uploader(
+    "Upload Image",
+    type=["jpg","jpeg","png"]
+)
+
+if uploaded_file:
+    image = Image.open(uploaded_file)
+
+    st.image(image, caption="Uploaded Image")
+
+    # Caption Generation
+    inputs = caption_processor(
+        image,
+        return_tensors="pt"
+    )
+
+    output = caption_model.generate(
+        **inputs,
+        max_new_tokens=50
+    )
+
+    caption = caption_processor.decode(
+        output[0],
+        skip_special_tokens=True
+    )
+
+    st.subheader("Generated Caption")
+    st.write(caption)
+
+    question = st.text_input(
+        "Ask a Question"
+    )
+
+    if question:
+        inputs = vqa_processor(
+            image,
+            question,
+            return_tensors="pt"
+        )
+
+        output = vqa_model.generate(
+            **inputs,
+            max_new_tokens=20
+        )
+
+        answer = vqa_processor.decode(
+            output[0],
+            skip_special_tokens=True
+        )
+
+        st.subheader("Answer")
+        st.write(answer)
