@@ -1,0 +1,17 @@
+## Sample Dataset
+
+| Image ID | Class Label |
+| -------- | ----------- |
+| IMG_001  | Dog         |
+| IMG_002  | Cat         |
+| IMG_003  | Airplane    |
+| IMG_004  | Horse       |
+| IMG_005  | Ship        |
+
+### Sample Data
+
+* Image: Dog.jpg → Label: Dog
+* Image: Cat.jpg → Label: Cat
+* Image: Airplane.jpg → Label: Airplane
+* Image: Horse.jpg → Label: Horse
+* Image: Ship.jpg → Label: Ship
