@@ -1,0 +1,6 @@
+Image_Name,Class_Label,Dataset,Image_Size,Total_Classes
+cifar10_dog_101.png,Dog,CIFAR-10,32x32,10
+cifar10_cat_102.png,Cat,CIFAR-10,32x32,10
+cifar10_ship_103.png,Ship,CIFAR-10,32x32,10
+cifar10_horse_104.png,Horse,CIFAR-10,32x32,10
+cifar10_airplane_105.png,Airplane,CIFAR-10,32x32,10
