@@ -1,74 +1,57 @@
-import streamlit as st
-from PIL import Image
-from transformers import BlipProcessor, BlipForConditionalGeneration, BlipForQuestionAnswering
+import tensorflow as tf
+from tensorflow.keras import datasets, layers, models
+import matplotlib.pyplot as plt
 
-# Caption Model
-caption_processor = BlipProcessor.from_pretrained(
-    "Salesforce/blip-image-captioning-base"
+# Load Dataset
+(train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()
+
+# Normalize pixel values
+train_images = train_images / 255.0
+test_images = test_images / 255.0
+
+# Class names
+class_names = ['airplane', 'automobile', 'bird', 'cat',
+               'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+# Build CNN Model
+model = models.Sequential([
+    layers.Conv2D(32, (3,3), activation='relu', input_shape=(32,32,3)),
+    layers.MaxPooling2D((2,2)),
+
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.MaxPooling2D((2,2)),
+
+    layers.Conv2D(64, (3,3), activation='relu'),
+
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')
+])
+
+# Compile Model
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
 )
-caption_model = BlipForConditionalGeneration.from_pretrained(
-    "Salesforce/blip-image-captioning-base"
-)
 
-# VQA Model
-vqa_processor = BlipProcessor.from_pretrained(
-    "Salesforce/blip-vqa-base"
-)
-vqa_model = BlipForQuestionAnswering.from_pretrained(
-    "Salesforce/blip-vqa-base"
-)
+# Train Model
+model.fit(train_images, train_labels, epochs=10,
+          validation_data=(test_images, test_labels))
 
-st.title("Multimodal Image Captioning + Q&A System")
+# Evaluate Model
+test_loss, test_acc = model.evaluate(test_images, test_labels)
 
-uploaded_file = st.file_uploader(
-    "Upload Image",
-    type=["jpg","jpeg","png"]
-)
+print("Test Accuracy:", test_acc)
 
-if uploaded_file:
-    image = Image.open(uploaded_file)
+# Predict One Image
+prediction = model.predict(test_images[:1])
 
-    st.image(image, caption="Uploaded Image")
+predicted_class = class_names[prediction.argmax()]
 
-    # Caption Generation
-    inputs = caption_processor(
-        image,
-        return_tensors="pt"
-    )
+print("Predicted Class:", predicted_class)
 
-    output = caption_model.generate(
-        **inputs,
-        max_new_tokens=50
-    )
-
-    caption = caption_processor.decode(
-        output[0],
-        skip_special_tokens=True
-    )
-
-    st.subheader("Generated Caption")
-    st.write(caption)
-
-    question = st.text_input(
-        "Ask a Question"
-    )
-
-    if question:
-        inputs = vqa_processor(
-            image,
-            question,
-            return_tensors="pt"
-        )
-
-        output = vqa_model.generate(
-            **inputs,
-            max_new_tokens=20
-        )
-
-        answer = vqa_processor.decode(
-            output[0],
-            skip_special_tokens=True
-        )
-
-        st.subheader("Answer")
-        st.write(answer)
+# Display Image
+plt.imshow(test_images[0])
+plt.title(f"Prediction: {predicted_class}")
+plt.show()
