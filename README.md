@@ -1,35 +1,57 @@
-This project implements an Image Classification system using a Convolutional Neural Network (CNN). The model is trained on the CIFAR-10 dataset and can classify images into 10 different categories.
+# Basic Image Classification Using CNN
 
-Features
-Image preprocessing
-CNN-based image classification
-Model training and evaluation
-Prediction on test images
-Visualization of results
-Technologies Used
-Python
-TensorFlow
-Keras
-NumPy
-Matplotlib
-Dataset
+## Project Overview
 
-The project uses the CIFAR-10 Dataset, which contains 60,000 color images across 10 classes:
+This project classifies images into different categories using a Convolutional Neural Network (CNN). The model is trained on image datasets and predicts the class of a given input image.
 
-Airplane
-Automobile
-Bird
-Cat
-Deer
-Dog
-Frog
-Horse
-Ship
-Truck
-Project Structure
-Image-Classification/
-│
-├── train.py
-├── requirements.txt
-├── README.md
-└── screenshots/
+## Dataset Features
+
+* Image Data
+* Pixel Values
+* Image Labels
+
+## Target Variable
+
+Image Category:
+
+* Airplane
+* Automobile
+* Bird
+* Cat
+* Deer
+* Dog
+* Frog
+* Horse
+* Ship
+* Truck
+
+## Models Implemented
+
+* Convolutional Neural Network (CNN)
+
+## Sample Input
+
+Image = Dog.jpg
+
+## Sample Output
+
+Predicted Class: Dog
+
+## Technologies Used
+
+* Python
+* TensorFlow
+* Keras
+* NumPy
+* Matplotlib
+
+## Project Goal
+
+To build an image classification system that can accurately identify and categorize images using deep learning techniques.
+
+## Future Enhancements
+
+* Real-time Image Classification
+* Streamlit Web Application
+* Custom Dataset Support
+* Improved Model Accuracy
