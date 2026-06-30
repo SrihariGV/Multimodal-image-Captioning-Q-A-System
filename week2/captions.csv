@@ -1,0 +1,24 @@
+Multimodal_Image_Captioning_QA/
+│
+├── dataset/
+│   ├── images/
+│   │   ├── image1.jpg
+│   │   ├── image2.jpg
+│   │   ├── image3.jpg
+│   │   └── ...
+│   ├── captions.csv
+│   └── image_features.pkl
+│
+├── models/
+│   ├── caption_model.h5
+│   └── tokenizer.pkl
+│
+├── feature_extraction.py
+├── dataset_preparation.py
+├── train_model.py
+├── image_caption.py
+├── visual_qa.py
+├── app.py
+├── requirements.txt
+├── README.md
+└── LICENSE
