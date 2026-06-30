@@ -1,24 +1,11 @@
-Multimodal_Image_Captioning_QA/
-│
-├── dataset/
-│   ├── images/
-│   │   ├── image1.jpg
-│   │   ├── image2.jpg
-│   │   ├── image3.jpg
-│   │   └── ...
-│   ├── captions.csv
-│   └── image_features.pkl
-│
-├── models/
-│   ├── caption_model.h5
-│   └── tokenizer.pkl
-│
-├── feature_extraction.py
-├── dataset_preparation.py
-├── train_model.py
-├── image_caption.py
-├── visual_qa.py
-├── app.py
-├── requirements.txt
-├── README.md
-└── LICENSE
+image,caption
+image1.jpg,A man is riding a bicycle on the road.
+image2.jpg,A dog is playing with a ball in the park.
+image3.jpg,A little girl is reading a book.
+image4.jpg,Two children are playing football.
+image5.jpg,A cat is sleeping on a sofa.
+image6.jpg,A group of people are walking on the beach.
+image7.jpg,A boy is flying a kite.
+image8.jpg,A woman is cooking in the kitchen.
+image9.jpg,A bird is sitting on a tree branch.
+image10.jpg,A car is parked near a building.
