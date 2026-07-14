@@ -1,0 +1,12 @@
+Vision_Model_CNN_Pretrained/
+│
+├── dataset/
+│   ├── train/
+│   ├── val/
+│   └── test/
+│
+├── models/
+├── notebooks/
+├── vision_model.py
+├── requirements.txt
+└── README.md
